@@ -592,5 +592,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.opa.eligible_device=true
 
+# Reduce cost of scrypt for FBE CE decryption
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.crypto.scrypt_params=13:3:1
+
 $(call inherit-product-if-exists, hardware/qcom/msm8994/msm8992.mk)
 $(call inherit-product-if-exists, vendor/qcom/gpu/msm8994/msm8994-gpu-vendor.mk)
