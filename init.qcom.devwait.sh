@@ -1,6 +1,6 @@
 #!/vendor/bin/sh
 
-up="`getprop sys.qcom.devup`"
+up="$1"
 while [ "$up" != "1" ]
 do
     sleep 0.1

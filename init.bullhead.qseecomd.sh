@@ -1,6 +1,6 @@
 #!/vendor/bin/sh
 
-registered="`getprop sys.listeners.registered`"
+registered="$1"
 while [ "$registered" != "true" ]
 do
     sleep 0.1
