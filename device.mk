@@ -336,6 +336,10 @@ PRODUCT_PACKAGES += \
     timekeep \
     TimeKeep
 
+# RRO
+PRODUCT_ENFORCE_RRO_TARGETS := \
+    framework-res
+
 # For wlan_mac.bin symlink
 PRODUCT_PACKAGES += \
     bullhead_wlan_mac
