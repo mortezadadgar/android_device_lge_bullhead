@@ -126,6 +126,9 @@ TARGET_COPY_OUT_VENDOR := vendor
 
 TARGET_RECOVERY_FSTAB = device/lge/bullhead/fstab.recovery
 
+# Use mke2fs to create ext4 images
+TARGET_USES_MKE2FS := true
+
 TARGET_RELEASETOOLS_EXTENSIONS := device/lge/bullhead
 
 BOARD_CHARGER_ENABLE_SUSPEND := true
