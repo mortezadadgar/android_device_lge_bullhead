@@ -122,6 +122,7 @@
 /system/bin/imsqmidaemon           u:object_r:ims_exec:s0
 /system/bin/cnd                    u:object_r:cnd_exec:s0
 /vendor/bin/init\.bullhead\.power\.sh           u:object_r:init-power-sh_exec:s0
+/vendor/bin/hw/android\.hardware\.light@2\.0-service\.bullhead        u:object_r:hal_light_default_exec:s0
 /vendor/bin/init\.bullhead\.sh                  u:object_r:bullhead-sh_exec:s0
 /vendor/bin/init\.bullhead\.qseecomd\.sh        u:object_r:init-bullhead-qseecomd-sh_exec:s0
 /vendor/bin/init\.qcom\.devstart\.sh            u:object_r:init-qcom-devstart-sh_exec:s0
