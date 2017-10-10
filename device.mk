@@ -369,7 +369,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.supplicant_scan_interval=15
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.opengles.version=196610
+    ro.opengles.version=196610 \
+	debug.sf.latch_unsignaled=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=420
