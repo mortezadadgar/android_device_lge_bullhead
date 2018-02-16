@@ -451,3 +451,6 @@ service devstart_sh /vendor/bin/init.qcom.devstart.sh
 
 on property:apexd.status=ready
     mount none /system/etc/swcodec/ld.config.txt /apex/com.android.media.swcodec/etc/ld.config.txt bind
+
+on property:vold.decrypt=trigger_restart_framework
+    restart vendor.camera-provider-2-4
