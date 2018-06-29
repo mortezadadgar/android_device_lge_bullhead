@@ -276,8 +276,7 @@ PRODUCT_PACKAGES += \
     libqomx_core \
     mm-qcamera-app \
     android.hardware.camera.provider@2.4-impl \
-    android.hardware.camera.provider@2.4-service \
-    camera.device@3.2-impl
+    android.hardware.camera.provider@2.4-service
 
 # Sensor & activity_recognition HAL
 TARGET_USES_NANOHUB_SENSORHAL := true
