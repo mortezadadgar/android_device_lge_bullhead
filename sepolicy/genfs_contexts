@@ -60,3 +60,6 @@ genfscon debugfs /kgsl		  u:object_r:debugfs_kgsl:s0
 #genfscon debugfs /kgsl/proc      u:object_r:debugfs_kgsl:s0
 genfscon debugfs /ipc_logging     u:object_r:debugfs_ipc:s0
 genfscon debugfs /rmt_storage     u:object_r:debugfs_rmt_storage:s0
+
+# storaged
+genfscon sysfs /devices/soc.0/f9824900.sdhci/mmc_host/mmc0/mmc0:0001/block/mmcblk0/stat       u:object_r:sysfs_disk_stat:s0
