@@ -32,9 +32,10 @@ on post-fs
     setprop sys.usb.ffs.max_write 262144
     setprop sys.usb.ffs.max_read 262144
     setprop sys.usb.mtp.device_type 3
-    write /sys/class/android_usb/android0/f_ffs/aliases adb
-
+    setprop persist.adb.nonblocking_ffs 0
+    setprop ro.adb.nonblocking_ffs 0
     setprop sys.usb.ffs.aio_compat 1
+    write /sys/class/android_usb/android0/f_ffs/aliases adb
 
 on post-fs-data
     write /sys/module/rndis_ipa/parameters/min_cpu_freq 1036800
