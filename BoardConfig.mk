@@ -190,3 +190,5 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 # Legacy blob support
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /vendor/bin/mm-qcamera-daemon=27
+
+TARGET_FLATTEN_APEX := true
