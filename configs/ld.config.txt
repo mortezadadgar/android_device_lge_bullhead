@@ -65,6 +65,7 @@ namespace.sphal.visible = true
 # These are dlopen'ed by libvndksupport.so.
 namespace.sphal.search.paths  = /odm/${LIB}
 namespace.sphal.search.paths += /vendor/${LIB}
+namespace.sphal.search.paths += /vendor/${LIB}/hw
 
 namespace.sphal.permitted.paths  = /odm/${LIB}
 namespace.sphal.permitted.paths += /vendor/${LIB}
@@ -89,6 +90,9 @@ namespace.sphal.asan.permitted.paths +=           /vendor/${LIB}
 namespace.sphal.search.paths += /odm/${LIB}/vndk-sp
 namespace.sphal.search.paths += /vendor/${LIB}/vndk-sp
 namespace.sphal.search.paths += /system/${LIB}/vndk-sp${VNDK_VER}
+
+# Legacy devices do not have vndk-sp, so add /system/${LIB} to search path instead
+namespace.sphal.search.paths += /system/${LIB}
 
 namespace.sphal.permitted.paths += /odm/${LIB}/hw
 namespace.sphal.permitted.paths += /odm/${LIB}/egl
