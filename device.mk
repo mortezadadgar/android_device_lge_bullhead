@@ -374,7 +374,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196610 \
-	debug.sf.latch_unsignaled=1
+	debug.sf.latch_unsignaled=1 \
+	debug.sf.disable_backpressure=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=420
