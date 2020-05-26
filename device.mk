@@ -327,6 +327,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
    fs_config_files
 
+# TimeKeep
+PRODUCT_PACKAGES += \
+    timekeep \
+    TimeKeep
+
 # For wlan_mac.bin symlink
 PRODUCT_PACKAGES += \
     bullhead_wlan_mac
