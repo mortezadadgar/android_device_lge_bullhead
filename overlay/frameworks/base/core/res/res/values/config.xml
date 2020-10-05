@@ -407,4 +407,7 @@
 
      <!-- True if the firmware supports Wi-Fi link probing -->
     <bool name="config_wifi_link_probing_supported">true</bool>
+
+	<!-- The amount to scale fullscreen snapshots for Overview and snapshot starting windows. -->
+	<item name="config_highResTaskSnapshotScale" format="float" type="dimen">0.8</item>
 </resources>
