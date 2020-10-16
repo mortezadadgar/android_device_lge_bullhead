@@ -169,7 +169,7 @@ PRODUCT_PACKAGES += \
     gralloc.msm8992 \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.allocator@2.0-service \
-    android.hardware.graphics.mapper@2.0-impl \
+    android.hardware.graphics.mapper@2.1-impl \
     hwcomposer.msm8992 \
     libgenlock \
     memtrack.msm8992 \
@@ -229,7 +229,8 @@ PRODUCT_PACKAGES += \
     android.hardware.soundtrigger@2.0-impl
 
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.composer@2.1-impl
+    android.hardware.graphics.composer@2.1-impl \
+	android.hardware.graphics.composer@2.1-service
 
 # GPS configuration
 PRODUCT_COPY_FILES += \
