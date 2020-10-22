@@ -1,6 +1,6 @@
 # Temperature sensor daemon (root process)
-type thermal-engine, domain, device_domain_deprecated;
-type thermal-engine_exec, exec_type, file_type;
+type thermal-engine, domain;
+type thermal-engine_exec, exec_type, file_type, vendor_file_type;
 
 # Started by init
 init_daemon_domain(thermal-engine)
@@ -26,5 +26,18 @@ allow thermal-engine sysfs_thermal:dir r_dir_perms;
 allow thermal-engine sysfs_thermal:file rw_file_perms;
 allow thermal-engine sysfs_thermal:lnk_file read;
 
-r_dir_file(thermal-engine, sysfs_ssr)
+allow thermal-engine sysfs_kgsl:dir r_dir_perms;
+allow thermal-engine sysfs_kgsl:file rw_file_perms;
+allow thermal-engine sysfs:dir r_dir_perms;
+allow thermal-engine sysfs:file rw_file_perms;
+
+#allow thermal-engine thermal-engine:capability { dac_override dac_read_search };
+allow thermal-engine sysfs_leds:dir search;
+allow thermal-engine sysfs_leds:file rw_file_perms;
+allow thermal-engine sysfs_battery:dir search;
+allow thermal-engine sysfs_battery:file rw_file_perms;
+
+r_dir_file(thermal-engine, sysfs_msm_subsys)
 r_dir_file(thermal-engine, sysfs_leds)
+
+allow thermal-engine vendor_file:dir r_dir_perms;

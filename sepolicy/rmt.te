@@ -1,6 +1,6 @@
 # remote storage process (runs as nobody)
-type rmt, domain, device_domain_deprecated;
-type rmt_exec, exec_type, file_type;
+type rmt, domain;
+type rmt_exec, exec_type, file_type, vendor_file_type;
 
 # Started by init
 init_daemon_domain(rmt)
@@ -32,3 +32,14 @@ wakelock_use(rmt)
 allow rmt uio_device:chr_file rw_file_perms;
 
 allow rmt mmc_block_device:blk_file r_file_perms;
+
+allow rmt debugfs_rmt_storage:dir { search read open };
+allow rmt debugfs_rmt_storage:file { read write open };
+
+allow rmt vendor_file:dir r_dir_perms;
+
+allow rmt sysfs:dir r_dir_perms;
+
+allow rmt sysfs_uio:dir r_dir_perms;
+allow rmt sysfs_uio:file rw_file_perms;
+allow rmt sysfs_uio:lnk_file r_file_perms;

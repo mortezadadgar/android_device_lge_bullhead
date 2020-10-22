@@ -1,5 +1,5 @@
-type irsc_util, domain, device_domain_deprecated;
-type irsc_util_exec, exec_type, file_type;
+type irsc_util, domain;
+type irsc_util_exec, exec_type, file_type, vendor_file_type;
 init_daemon_domain(irsc_util)
 
 userdebug_or_eng(`
@@ -11,3 +11,5 @@ allowxperm irsc_util self:socket ioctl msm_sock_ipc_ioctls;
 
 create_pty(irsc_util)
 allow irsc_util irsc_util_exec:file execute_no_trans;
+
+allow irsc_util vendor_file:dir r_dir_perms;

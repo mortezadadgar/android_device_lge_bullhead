@@ -6,6 +6,8 @@ type debugfs_bufinfo, fs_type, debugfs_type;
 type sysfs_power_management, fs_type, sysfs_type;
 type sysfs_surfaceflinger, fs_type, sysfs_type;
 
+type sysfs_rndis, fs_type, sysfs_type;
+
 # file type for irqbalance socket
 type msm_irqbalance_socket, file_type;
 
@@ -49,8 +51,8 @@ type persist_sensortool_file, file_type;
 type persist_camera_file, file_type;
 
 # File types required by mdm-helper
-type sysfs_ssr,  sysfs_type, fs_type;
-type sysfs_ssr_toggle,  sysfs_type, fs_type;
+type sysfs_msm_subsys, sysfs_type, fs_type;
+type sysfs_msm_subsys_restart, sysfs_type, fs_type;
 type sysfs_hsic, sysfs_type, fs_type;
 type sysfs_hsic_host_rdy, sysfs_type, fs_type;
 
@@ -63,11 +65,10 @@ type thermal_socket, file_type;
 # type for perfd
 type sysfs_performance, sysfs_type, fs_type;
 
-type nanohub_lock_file, file_type, data_file_type;
+type nanohub_lock_file, file_type, data_file_type, core_data_file_type;
 
 # SurfaceFlinger file type for sysfs access
 type sysfs_graphics, sysfs_type, fs_type;
-type sysfs_display, sysfs_type, fs_type;
 
 # Files accessed by qcom-system-daemon
 type sysfs_socinfo, fs_type, sysfs_type;
@@ -85,3 +86,33 @@ type sysfs_nanoapp_cmd, sysfs_type, fs_type;
 
 # type for devstart
 type sysfs_audio, sysfs_type, fs_type;
+
+# type for memtrack
+type debugfs_kgsl, fs_type, debugfs_type;
+type sysfs_kgsl, fs_type, sysfs_type;
+
+# type for healthd
+type sysfs_battery, fs_type, sysfs_type;
+
+# type for privapp
+type sysfs_wlan0, fs_type, sysfs_type;
+
+# type for storaged
+type sysfs_mmc, fs_type, sysfs_type;
+
+# type for init
+type sysfs_g_android_param, fs_type, sysfs_type;
+type sysfs_lge_handle_panic_param, fs_type, sysfs_type;
+
+# type for rmt
+type debugfs_rmt_storage, fs_type, debugfs_type;
+
+# type for perfs
+type sysfs_ksm, fs_type, sysfs_type;
+
+type netmgrd_socket, file_type;
+type wifihal_socket, file_type;
+
+# type for init
+type sysfs_rfkill0, fs_type, sysfs_type;
+type sysfs_poweroff, sysfs_type, fs_type;
