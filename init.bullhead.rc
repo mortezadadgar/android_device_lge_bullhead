@@ -192,6 +192,9 @@ on boot
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
 on late-fs
+    # Start devices by sysfs trigger
+    start devstart_sh
+
     # Start bootanim and its dependencies
     start surfaceflinger
     start audioserver
@@ -224,8 +227,6 @@ on post-fs
 
     # wait qseecomd come up
     wait_for_prop sys.listeners.registered true
-    # Start devices by sysfs trigger
-    start devstart_sh
 
 on post-fs-data
     # We can start netd here before in is launched in common init.rc on zygote-start
