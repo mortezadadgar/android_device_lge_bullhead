@@ -1,3 +1,4 @@
 allow fsck block_device:blk_file ioctl;
 allow fsck fsck:blk_file read;
 allow fsck persist_block_device:blk_file rw_file_perms;
+allow fsck tmpfs:lnk_file { read };

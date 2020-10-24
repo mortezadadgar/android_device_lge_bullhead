@@ -49,3 +49,8 @@ allow init firmware_file:dir mounton;
 allow init sysfs_rndis:file rw_file_perms;
 
 allow init sysfs_poweroff:file rw_file_perms;
+
+# hwservicemanager
+allow init hwservicemanager:binder { call transfer };
+
+allow init persist_block_device:lnk_file relabelto;
