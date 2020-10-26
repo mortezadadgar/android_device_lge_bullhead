@@ -350,10 +350,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.speaker.prot.enable=true \
     ro.config.vc_call_vol_steps=7
 
-# Default OMX service to non-Treble
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.media.treble_omx=false
-
 # Write Manufacturer & Model information in created media files.
 PRODUCT_PROPERTY_OVERRIDES += \
     media.recorder.show_manufacturer_and_model=true
