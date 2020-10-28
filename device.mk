@@ -349,6 +349,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicerec=false \
     persist.audio.fluence.speaker=true \
     persist.speaker.prot.enable=true \
+    tunnel.audio.encode=false \
+    audio.deep_buffer.media=true \
+    audio.offload.gapless.enabled=true \
+    audio.offload.buffer.size.kb=32 \
+    audio.offload.pcm.16bit.enable=true \
+    audio.offload.pcm.24bit.enable=true \
+    audio.offload.passthrough=false \
+    audio.offload.multiple.enabled=true \
     ro.config.vc_call_vol_steps=7
 
 # Write Manufacturer & Model information in created media files.
