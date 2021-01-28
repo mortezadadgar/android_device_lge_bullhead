@@ -183,9 +183,6 @@ BOARD_KERNEL_CMDLINE += mem=1024M
 MALLOC_SVELTE := true
 endif
 
-# Enable workaround for slow rom flash
-BOARD_SUPPRESS_SECURE_ERASE := true
-
 # Legacy blob support
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /vendor/bin/mm-qcamera-daemon=27
