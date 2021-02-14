@@ -97,8 +97,8 @@ write /sys/devices/system/cpu/cpu5/online 1
 write /sys/module/msm_performance/parameters/cpu_max_freq "4:4294967295 5:4294967295"
 
 # input boost configuration
-write /sys/module/cpu_boost/parameters/input_boost_freq "0:960000"
-write /sys/module/cpu_boost/parameters/input_boost_ms 40
+write /sys/module/cpu_boost/parameters/input_boost_freq "0:1248000"
+write /sys/module/cpu_boost/parameters/input_boost_ms 120
 
 # Setting B.L scheduler parameters
 write /proc/sys/kernel/sched_migration_fixup 1
