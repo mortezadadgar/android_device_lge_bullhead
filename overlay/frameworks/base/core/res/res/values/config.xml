@@ -382,8 +382,8 @@
         <item>"/system/framework/arm64/boot.oat"</item>
         <item>"/system/framework/arm64/boot-core-libart.oat"</item>
         <item>"/system/product/priv-app/SystemUI/SystemUI.apk"</item>
-        <item>"/data/dalvik-cache/arm64/system@product@priv-app@SystemUI@SystemUI.apk@classes.dex"</item>
-        <item>"/data/dalvik-cache/arm64/system@product@priv-app@SystemUI@SystemUI.apk@classes.vdex"</item>
+        <item>"/system/product/priv-app/SystemUI/oat/arm64/SystemUI.odex"</item>
+        <item>"/system/product/priv-app/SystemUI/oat/arm64/SystemUI.vdex"</item>
         <item>"/system/lib64/libsurfaceflinger.so"</item>
         <item>"/apex/com.android.runtime/javalib/core-oj.jar"</item>
         <item>"/apex/com.android.runtime/javalib/core-libart.jar"</item>
