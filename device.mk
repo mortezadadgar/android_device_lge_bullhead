@@ -285,6 +285,10 @@ NANOHUB_SENSORHAL_LID_STATE_ENABLED := true
 NANOHUB_SENSORHAL_SENSORLIST := $(LOCAL_PATH)/sensorhal/sensorlist.cpp
 NANOHUB_SENSORHAL_DIRECT_REPORT_ENABLED := true
 
+# Seccomp
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/seccomp_policy/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
+
 PRODUCT_PACKAGES += \
     sensors.bullhead \
     activity_recognition.bullhead \
