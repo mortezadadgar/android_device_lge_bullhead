@@ -19,9 +19,6 @@
 #
 # Everything in this directory will become public
 
-# Enable support for chinook sensorhub
-TARGET_USES_CHINOOK_SENSORHUB := false
-
 PRODUCT_COPY_FILES += \
     device/lge/bullhead/init.bullhead.rc:root/init.bullhead.rc \
     device/lge/bullhead/init.bullhead.usb.rc:root/init.bullhead.usb.rc \
@@ -30,15 +27,8 @@ PRODUCT_COPY_FILES += \
     device/lge/bullhead/init.recovery.bullhead.rc:root/init.recovery.bullhead.rc \
     device/lge/bullhead/init.bullhead.ramdump.rc:root/init.bullhead.ramdump.rc \
     device/lge/bullhead/init.bullhead.fp.rc:root/init.bullhead.fp.rc \
+    device/lge/bullhead/init.bullhead.nanohub.rc:root/init.bullhead.sensorhub.rc \
     device/lge/bullhead/init.qcom.devstart.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.devstart.sh
-
-ifeq ($(TARGET_USES_CHINOOK_SENSORHUB),true)
-PRODUCT_COPY_FILES += \
-    device/lge/bullhead/init.bullhead.sensorhub.rc:root/init.bullhead.sensorhub.rc
-else
-PRODUCT_COPY_FILES += \
-    device/lge/bullhead/init.bullhead.nanohub.rc:root/init.bullhead.sensorhub.rc
-endif
 
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
@@ -65,7 +55,7 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
 
 
-#Sound Trigger
+# Sound Trigger
 PRODUCT_COPY_FILES += \
     device/lge/bullhead/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
     device/lge/bullhead/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml
@@ -148,8 +138,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/lge/bullhead/init.bullhead.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.bullhead.sh
 
-PRODUCT_TAGS += dalvik.gc.type-precise
-
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 # A list of dpis to select prebuilt apk, in precedence order.
@@ -157,20 +145,18 @@ PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
 
 PRODUCT_CHARACTERISTICS := nosdcard
 
-# for off charging mode
+# Graphics HAL
 PRODUCT_PACKAGES += \
-    charger_res_images
-
-PRODUCT_PACKAGES += \
-    gralloc.msm8992 \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.mapper@2.0-impl \
-    hwcomposer.msm8992 \
-    libgenlock \
-    memtrack.msm8992 \
+    android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.composer@2.1-service \
     android.hardware.memtrack@1.0-impl \
-    android.hardware.memtrack@1.0-service
+    android.hardware.memtrack@1.0-service \
+    gralloc.msm8992 \
+    hwcomposer.msm8992 \
+    memtrack.msm8992
 
 # Light HAL
  PRODUCT_PACKAGES += \
@@ -180,9 +166,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
 
+# DRM HAL
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
 
+# OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
     libstagefrighthw \
@@ -193,7 +181,6 @@ PRODUCT_PACKAGES += \
     libOmxVenc
 
 # Audio HAL and utilities
-USE_XML_AUDIO_POLICY_CONF := 1
 PRODUCT_PACKAGES += \
     audio.primary.msm8992 \
     audio.a2dp.default \
@@ -217,30 +204,29 @@ PRODUCT_PACKAGES += \
     librmnetctl \
     rmnetcli
 
+# Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
     android.hardware.audio@2.0-service \
     android.hardware.audio.effect@2.0-impl \
     android.hardware.soundtrigger@2.0-impl
 
-PRODUCT_PACKAGES += \
-    android.hardware.graphics.composer@2.1-impl \
-    android.hardware.graphics.composer@2.1-service
-
 # GPS configuration
 PRODUCT_COPY_FILES += \
     device/lge/bullhead/gps.conf:system/etc/gps.conf
 
-# GPS
+# GPS HAL
 PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0-impl \
+    android.hardware.gnss@1.0-service \
     gps.msm8992
 
 # NFC packages
 PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.1-service \
     libnfc-nci \
     NfcNci \
-    Tag \
-    android.hardware.nfc@1.1-service
+    Tag
 
 # Keymaster HAL
 PRODUCT_PACKAGES += \
@@ -268,15 +254,15 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
+    android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-service \
     camera.msm8992 \
     libcamera \
     libmmcamera_interface \
     libmmcamera_interface2 \
     libmmjpeg_interface \
     libqomx_core \
-    mm-qcamera-app \
-    android.hardware.camera.provider@2.4-impl \
-    android.hardware.camera.provider@2.4-service
+    mm-qcamera-app
 
 # Sensor & activity_recognition HAL
 TARGET_USES_NANOHUB_SENSORHAL := true
@@ -288,6 +274,7 @@ NANOHUB_SENSORHAL_DIRECT_REPORT_ENABLED := true
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/seccomp_policy/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
 
+# Sensors
 PRODUCT_PACKAGES += \
     sensors.bullhead \
     activity_recognition.bullhead \
@@ -300,27 +287,8 @@ PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-impl \
     android.hardware.gatekeeper@1.0-service
 
-ifeq ($(TARGET_USES_CHINOOK_SENSORHUB),true)
 PRODUCT_PACKAGES += \
-    sensortool.bullhead
-else
-PRODUCT_PACKAGES += \
-    nanoapp_cmd
-endif
-
-# sensor utilities (only for userdebug and eng builds)
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
-PRODUCT_PACKAGES += \
-    nanotool \
-    sensortest
-endif
-
-# Library used for VTS profiling (only for userdebug and eng builds)
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
-PRODUCT_PACKAGES += \
-    libvts_profiling \
-    libvts_multidevice_proto
-endif
+    nanoapp_cmd \
 
 PRODUCT_PACKAGES += \
     keystore.msm8992 \
@@ -405,6 +373,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vidc.debug.perf.mode=2 \
     vidc.enc.dcvs.extra-buff-count=2
 
+# HWUI common settings
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.texture_cache_size=56 \
     ro.hwui.layer_cache_size=32 \
@@ -421,6 +390,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.frp.pst=/dev/block/platform/soc.0/f9824900.sdhci/by-name/persistent
 
+# Enable DRM service
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
 
@@ -513,9 +483,9 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # Bluetooth HAL
 PRODUCT_PACKAGES += \
-    libbt-vendor \
     android.hardware.bluetooth@1.0-impl \
-    android.hardware.bluetooth@1.0-service
+    android.hardware.bluetooth@1.0-service \
+    libbt-vendor
 
 # limit dex2oat threads to improve thermals
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -532,7 +502,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.redir_party_num=0
 
-# NFC/camera interaction workaround - DO NOT COPY TO NEW DEVICES
+# NFC/camera interaction workaround
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.camera.notify_nfc=1
 
@@ -544,18 +514,13 @@ PRODUCT_PACKAGES += \
 # Thermal HAL
 PRODUCT_PACKAGES += \
     thermal.bullhead \
-     android.hardware.thermal@2.0-service.mock
-
-#GNSS HAL
-PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.0-impl \
-    android.hardware.gnss@1.0-service
+    android.hardware.thermal@2.0-service.mock
 
 # Trust HAL
 PRODUCT_PACKAGES += \
     vendor.lineage.trust@1.0-service
 
-#USB HAL
+# USB HAL
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
 
@@ -563,21 +528,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.build.security_patch=2018-10-05
 
-# Modem debugger/misc
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
-ifeq (,$(filter aosp_bullhead, $(TARGET_PRODUCT)))
-PRODUCT_PACKAGES += \
-    NexusLogger
-endif # aosp_bullhead
-
-PRODUCT_COPY_FILES += \
-    device/lge/bullhead/init.bullhead.diag.rc.userdebug:root/init.bullhead.diag.rc \
-    device/lge/bullhead/init.bullhead.misc.rc.userdebug:root/init.bullhead.misc.rc
-else
 PRODUCT_COPY_FILES += \
     device/lge/bullhead/init.bullhead.diag.rc.user:root/init.bullhead.diag.rc \
     device/lge/bullhead/init.bullhead.misc.rc.user:root/init.bullhead.misc.rc
-endif
 
 # Set if a device image has the VTS coverage instrumentation.
 ifeq ($(NATIVE_COVERAGE),true)

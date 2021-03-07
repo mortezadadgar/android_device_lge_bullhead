@@ -56,6 +56,7 @@ BOARD_USES_ALSA_AUDIO := true
 AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
 BOARD_SUPPORTS_SOUND_TRIGGER := true
 AUDIO_FEATURE_ENABLED_SPKR_PROTECTION := true
+USE_XML_AUDIO_POLICY_CONF := 1
 
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
@@ -156,15 +157,6 @@ BOARD_PERFSETUP_SCRIPT := platform_testing/scripts/perf-setup/bullhead-setup.sh
 
 DEVICE_MANIFEST_FILE := device/lge/bullhead/manifest.xml
 DEVICE_MATRIX_FILE := device/lge/bullhead/compatibility_matrix.xml
-
-ifeq ($(TARGET_PRODUCT),aosp_bullhead_svelte)
-BOARD_KERNEL_CMDLINE += mem=1024M maxcpus=2
-MALLOC_SVELTE := true
-endif
-ifeq ($(TARGET_PRODUCT),bullhead_svelte)
-BOARD_KERNEL_CMDLINE += mem=1024M
-MALLOC_SVELTE := true
-endif
 
 # Legacy blob support
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
