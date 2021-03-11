@@ -18,7 +18,6 @@ import init.bullhead.usb.rc
 import init.bullhead.diag.rc
 import init.bullhead.fp.rc
 import init.bullhead.sensorhub.rc
-import init.bullhead.ramdump.rc
 import init.bullhead.misc.rc
 
 on early-init
@@ -180,10 +179,6 @@ on boot
     write /sys/bus/msm_subsys/devices/subsys2/restart_level "related"
     write /sys/bus/msm_subsys/devices/subsys3/restart_level "related"
 
-    # Subsytem Ramdump collection
-    write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
-    write /sys/module/msm_poweroff/parameters/download_mode 0
-
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth
     write /proc/sys/net/ipv4/tcp_adv_win_scale 1
 
@@ -292,9 +287,6 @@ on zygote-start
     mkdir /data/misc/perfd 0755 root system
     chmod 2755 /data/misc/perfd
     rm /data/misc/perfd/default_values
-
-    # Subsytem Ramdump collection
-    mkdir /data/ramdump 0700 root root
 
     setprop vold.post_fs_data_done 1
 
@@ -425,15 +417,6 @@ service qcamerasvr /vendor/bin/mm-qcamera-daemon
     user camera
     group camera system inet input graphics
     writepid /dev/cpuset/camera-daemon/tasks
-
-on property:ro.debuggable=1
-    start ss_ramdump
-
-service ss_ramdump /vendor/bin/subsystem_ramdump
-    class main
-    user root
-    group root system
-    disabled
 
 service cnd /vendor/bin/cnd
     class late_start
