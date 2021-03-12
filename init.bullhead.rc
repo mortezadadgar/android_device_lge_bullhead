@@ -107,6 +107,9 @@ on early-boot
     # wait for devices
     wait_for_prop sys.qcom.devup 1
 
+    # Update dm-verity state and set partition.*.verified properties
+    verity_update_state
+
 on boot
     # execute script to set initial CPU settings
     # don't run as a service to avoid race conditions
