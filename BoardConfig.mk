@@ -29,6 +29,7 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 
 TARGET_NO_BOOTLOADER := true
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 
 # Inline kernel
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
