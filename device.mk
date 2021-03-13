@@ -524,6 +524,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
 
+# LiveDisplay
+PRODUCT_PACKAGES += \
+    vendor.lineage.livedisplay@2.0-service-legacymm \
+    vendor.lineage.livedisplay@2.0-service-sysfs
+
 #Vendor Patch Level
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.build.security_patch=2018-10-05
